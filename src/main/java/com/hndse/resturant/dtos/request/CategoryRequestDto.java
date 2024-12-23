@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -15,4 +17,7 @@ public class CategoryRequestDto {
 
     @Size(max = 500,message = "Description must not exceed 500 characters.")
     private String description;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

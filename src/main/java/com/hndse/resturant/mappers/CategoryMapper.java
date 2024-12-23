@@ -6,6 +6,7 @@ import com.hndse.resturant.entities.Category;
 public class CategoryMapper {
     public static Category mapToCategoty(CategoryRequestDto categoryRequestDto){
         Category category = new Category();
+        category.setId(categoryRequestDto.getId());
         category.setName(categoryRequestDto.getName());
         category.setDescription(categoryRequestDto.getDescription());
         return category;

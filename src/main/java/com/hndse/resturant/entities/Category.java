@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
@@ -21,7 +22,11 @@ public class Category {
     private Integer id;
     private String name;
     private String description;
+
+    @CreatedDate
+    @Column(updatable = false, nullable = false)
     private LocalDateTime createdAt;
+
     private LocalDateTime updatedAt;
 
 

@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 public class CategoryRequestDto {
+    private Integer id;
     @NotBlank(message = "Name is required.")
     @Size(max = 30,message = "Name must not exceed 30 characters.")
     private String name;

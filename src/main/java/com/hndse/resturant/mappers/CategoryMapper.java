@@ -11,4 +11,12 @@ public class CategoryMapper {
         category.setDescription(categoryRequestDto.getDescription());
         return category;
     }
+
+    public static CategoryRequestDto mapToCategoryRequestDto(Category category){
+        CategoryRequestDto categoryRequestDto = new CategoryRequestDto();
+        categoryRequestDto.setId(category.getId());
+        categoryRequestDto.setName(category.getName());
+        categoryRequestDto.setDescription(category.getDescription());
+        return categoryRequestDto;
+    }
 }

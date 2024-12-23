@@ -20,32 +20,67 @@ public class CategoryController {
     private ResponseDto responseDto;
 
     @PostMapping("/addcategory")
-    public ResponseEntity<ResponseDto> createCategory(@Valid @RequestBody CategoryRequestDto categoryRequestDto){
-       try{
-           categoryService.createCategory(categoryRequestDto);
-           if(responseDto.getCode().equals(VarList.RSP_SUCCESS)){
-               return new ResponseEntity<>(responseDto, HttpStatus.ACCEPTED);
-           } else{
-               return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
-           }
-       }catch (Exception e){
-           responseDto.setCode(VarList.RSP_ERROR);
-           responseDto.setMessage(e.getMessage());
-           responseDto.setContent(null);
-           return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
-       }
+    public ResponseEntity<ResponseDto> createCategory(@Valid @RequestBody CategoryRequestDto categoryRequestDto) {
+        try {
+            categoryService.createCategory(categoryRequestDto);
+            if (responseDto.getCode().equals(VarList.RSP_SUCCESS)) {
+                return new ResponseEntity<>(responseDto, HttpStatus.ACCEPTED);
+            } else {
+                return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
+            }
+        } catch (Exception e) {
+            responseDto.setCode(VarList.RSP_ERROR);
+            responseDto.setMessage(e.getMessage());
+            responseDto.setContent(null);
+            return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/updatecategory")
-    public ResponseEntity<ResponseDto> updateCategory(@Valid @RequestBody CategoryRequestDto categoryRequestDto){
-        try{
+    public ResponseEntity<ResponseDto> updateCategory(@Valid @RequestBody CategoryRequestDto categoryRequestDto) {
+        try {
             categoryService.updateCategory(categoryRequestDto);
-            if(responseDto.getCode().equals(VarList.RSP_SUCCESS)){
+            if (responseDto.getCode().equals(VarList.RSP_SUCCESS)) {
+                return new ResponseEntity<>(responseDto, HttpStatus.ACCEPTED);
+            } else {
+                return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
+            }
+        } catch (Exception e) {
+            responseDto.setCode(VarList.RSP_ERROR);
+            responseDto.setMessage(e.getMessage());
+            responseDto.setContent(null);
+            return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/getallcategories")
+    public ResponseEntity<ResponseDto> getAllCategories() {
+        try {
+            categoryService.getAllCategories();
+            if (responseDto.getCode().equals(VarList.RSP_SUCCESS)) {
+                return new ResponseEntity<>(responseDto, HttpStatus.ACCEPTED);
+            } else {
+                return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
+            }
+        } catch (Exception e) {
+            responseDto.setCode(VarList.RSP_ERROR);
+            responseDto.setMessage(e.getMessage());
+            responseDto.setContent(null);
+            return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/deletecategory")
+    public ResponseEntity<ResponseDto> deleteCategory(@Valid @RequestBody CategoryRequestDto categoryRequestDto) {
+        try{
+            categoryService.deleteCategory(categoryRequestDto);
+            if (responseDto.getCode().equals(VarList.RSP_SUCCESS)) {
                 return new ResponseEntity<>(responseDto, HttpStatus.ACCEPTED);
             }else {
                 return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
             }
-        }catch (Exception e){
+        }
+        catch(Exception e){
             responseDto.setCode(VarList.RSP_ERROR);
             responseDto.setMessage(e.getMessage());
             responseDto.setContent(null);

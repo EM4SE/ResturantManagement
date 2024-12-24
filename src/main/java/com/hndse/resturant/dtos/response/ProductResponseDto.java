@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 public class ProductResponseDto {
+    private Integer id;
     @Size(max = 30,message = "Name must not exceed 30 characters.")
     private String name;
     @Size(max = 500,message = "Description must not exceed 500 characters.")
@@ -19,4 +20,7 @@ public class ProductResponseDto {
     private Double price;
     private String category;
     private String imagePath;
+    private String availability;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

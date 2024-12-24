@@ -2,6 +2,7 @@ package com.hndse.resturant.mappers;
 
 import com.hndse.resturant.dtos.request.ProductRequestDto;
 import com.hndse.resturant.dtos.response.ProductResponseDto;
+import com.hndse.resturant.entities.Category;
 import com.hndse.resturant.entities.Product;
 
 public class ProductMapper {
@@ -39,11 +40,30 @@ public class ProductMapper {
 
     public static ProductResponseDto mapToProductResponseDto(ProductRequestDto productRequestDto) {
         ProductResponseDto productResponseDto = new ProductResponseDto();
+        productResponseDto.setId(productRequestDto.getId());
         productResponseDto.setName(productRequestDto.getName());
         productResponseDto.setDescription(productRequestDto.getDescription());
         productResponseDto.setPrice(productRequestDto.getPrice());
         productResponseDto.setCategory(productRequestDto.getCategory());
         productResponseDto.setImagePath(productRequestDto.getImagePath());
+        productResponseDto.setAvailability(productRequestDto.getAvailability());
+        productResponseDto.setCreatedAt(productRequestDto.getCreatedAt());
+        productResponseDto.setUpdatedAt(productRequestDto.getUpdatedAt());
+        return productResponseDto;
+    }
+
+    public static ProductResponseDto mapToProductResponseDto(Product product) {
+
+        ProductResponseDto productResponseDto = new ProductResponseDto();
+        productResponseDto.setId(product.getId());
+        productResponseDto.setName(product.getName());
+        productResponseDto.setDescription(product.getDescription());
+        productResponseDto.setPrice(product.getPrice());
+        productResponseDto.setCategory(product.getCategory());
+        productResponseDto.setImagePath(product.getImagePath());
+        productResponseDto.setAvailability(product.getAvailability());
+        productResponseDto.setCreatedAt(product.getCreatedAt());
+        productResponseDto.setUpdatedAt(product.getUpdatedAt());
         return productResponseDto;
     }
 }

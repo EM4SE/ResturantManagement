@@ -39,4 +39,38 @@ public class OrderConroller {
 
         }
     }
+
+    @GetMapping("getallorders")
+    public ResponseEntity<ResponseDto> getAllOrders() {
+        try{
+            orderService.getallOrders();
+            if(responseDto.getCode().equals(VarList.RSP_SUCCESS)){
+                return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+            }else{
+                return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
+            }
+        }catch (Exception e){
+            responseDto.setCode(VarList.RSP_ERROR);
+            responseDto.setMessage(e.getMessage());
+            responseDto.setContent(null);
+            return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("getorderitems")
+    public ResponseEntity<ResponseDto> getOrderItems(@Valid @RequestBody OrderRequestDto orderRequestDto) {
+        try{
+            orderService.getOrderItemById(orderRequestDto);
+            if(responseDto.getCode().equals(VarList.RSP_SUCCESS)){
+                return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+            }else{
+                return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
+            }
+        }catch (Exception e){
+            responseDto.setCode(VarList.RSP_ERROR);
+            responseDto.setMessage(e.getMessage());
+            responseDto.setContent(null);
+            return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

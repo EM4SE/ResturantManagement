@@ -20,4 +20,5 @@ public class OrderRequestDto {
     private LocalDateTime orderedAt;
     private double totalAmount;
     private String orderStatus;
+
 }

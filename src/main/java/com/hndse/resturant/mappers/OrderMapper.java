@@ -51,5 +51,14 @@ public static List<OrderItem> toOrderItemList(List<OrderItemRequestDto> orderIte
     }).collect(Collectors.toList());
 
 }
+public static OrderRequestDto toOrderRequestDto(Order order) {
+    OrderRequestDto orderRequestDto = new OrderRequestDto();
+    orderRequestDto.setId(order.getId());
+    orderRequestDto.setTableNumber(order.getTableNumber());
+    orderRequestDto.setTotalAmount(order.getTotalAmount());
+    orderRequestDto.setOrderStatus(order.getOrderStatus());
+    orderRequestDto.setOrderedAt(order.getOrderedAt());
+    return orderRequestDto;
+}
 
 }

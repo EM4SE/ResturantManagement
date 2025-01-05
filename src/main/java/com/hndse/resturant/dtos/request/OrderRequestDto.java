@@ -16,6 +16,9 @@ public class OrderRequestDto {
     private Integer id;
     @NotBlank(message = "Table id is required.")
     private Integer tableNumber;
+    private String orderType;
+    private String tableAssistant;
+    private int numberOfCustomers;
     private List<OrderItemRequestDto> orderItems;
     private LocalDateTime orderedAt;
     private double totalAmount;

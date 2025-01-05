@@ -36,6 +36,9 @@ public static Order mapToOrder(OrderRequestDto orderRequestDto) {
     order.setTableNumber(orderRequestDto.getTableNumber());
     order.setTotalAmount(orderRequestDto.getTotalAmount());
     order.setOrderStatus(orderRequestDto.getOrderStatus());
+    order.setOrderType(orderRequestDto.getOrderType());
+    order.setTableAssistant(orderRequestDto.getTableAssistant());
+    order.setNumberOfCustomers(orderRequestDto.getNumberOfCustomers());
     return order;
 }
 public static List<OrderItem> toOrderItemList(List<OrderItemRequestDto> orderItemRequestDtoList,Integer orderId) {
@@ -58,6 +61,9 @@ public static OrderRequestDto toOrderRequestDto(Order order) {
     orderRequestDto.setTotalAmount(order.getTotalAmount());
     orderRequestDto.setOrderStatus(order.getOrderStatus());
     orderRequestDto.setOrderedAt(order.getOrderedAt());
+    orderRequestDto.setOrderType(order.getOrderType());
+    orderRequestDto.setTableAssistant(order.getTableAssistant());
+    orderRequestDto.setNumberOfCustomers(order.getNumberOfCustomers());
     return orderRequestDto;
 }
 

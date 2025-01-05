@@ -33,8 +33,6 @@ public class OrderService {
     public void createOrder(OrderRequestDto orderRequestDto) {
 
         try {
-
-
             if (orderRequestDto.getOrderItems().isEmpty()) {
                 responseDto.setCode(VarList.RSP_NO_DATA_FOUND);
                 responseDto.setMessage("No order items found");
@@ -48,7 +46,20 @@ public class OrderService {
                 responseDto.setCode(VarList.RSP_NO_DATA_FOUND);
                 responseDto.setMessage("Table Not Available");
                 responseDto.setContent(orderRequestDto);
-            }else{
+            }else if(orderRequestDto.getOrderType().isEmpty())
+            {   responseDto.setCode(VarList.RSP_NO_DATA_FOUND);
+                responseDto.setMessage("No order type found");
+                responseDto.setContent(orderRequestDto);
+            }else if(orderRequestDto.getTableAssistant().isEmpty()){
+                responseDto.setCode(VarList.RSP_NO_DATA_FOUND);
+                responseDto.setMessage("No table assistant found");
+                responseDto.setContent(orderRequestDto);
+            }else if(orderRequestDto.getNumberOfCustomers() < 1){
+                responseDto.setCode(VarList.RSP_NO_DATA_FOUND);
+                responseDto.setMessage("Number of  customers is invalid");
+                responseDto.setContent(orderRequestDto);
+            }
+            else{
                 Order order = OrderMapper.mapToOrder(orderRequestDto);
                 orderRepository.save(order);
                 Integer orderId = order.getId();

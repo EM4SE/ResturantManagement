@@ -6,6 +6,7 @@ import com.hndse.resturant.services.CategoryService;
 import com.hndse.resturant.utilities.VarList;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +47,13 @@ public class CategoryController {
             } else {
                 return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
             }
-        } catch (Exception e) {
+        }catch (DataIntegrityViolationException ex){
+            responseDto.setCode(VarList.RSP_DUPLICATED);
+            responseDto.setMessage("Category Name already exists");
+            responseDto.setContent(categoryRequestDto);
+            return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
+
+        }  catch (Exception e) {
             responseDto.setCode(VarList.RSP_ERROR);
             responseDto.setMessage(e.getMessage());
             responseDto.setContent(null);

@@ -17,6 +17,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer tableNumber;
+    private String orderType;
+    private String tableAssistant;
+    private int numberOfCustomers;
     @Column(updatable = false, nullable = false)
     private LocalDateTime orderedAt;
     private double totalAmount;

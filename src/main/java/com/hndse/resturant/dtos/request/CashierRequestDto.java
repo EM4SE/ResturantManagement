@@ -15,7 +15,7 @@ public class CashierRequestDto {
     private String username;
     private String password;
     private int mobile;
-    private String Status;
+    private String status;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

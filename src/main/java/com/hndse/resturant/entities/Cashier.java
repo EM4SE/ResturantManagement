@@ -22,7 +22,7 @@ public class Cashier {
     private String username;
     private String password;
     private int mobile;
-    private String Status;
+    private String status;
 
 
     @CreatedDate

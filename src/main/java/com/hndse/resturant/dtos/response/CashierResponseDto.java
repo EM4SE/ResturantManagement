@@ -18,3 +18,4 @@ public class CashierResponseDto {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
+

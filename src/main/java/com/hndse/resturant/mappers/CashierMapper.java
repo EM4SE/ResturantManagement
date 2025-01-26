@@ -21,7 +21,17 @@ public class CashierMapper {
         return cashier;
     }
 
-    private static CashierRequestDto mapToCashierRequestDto(Cashier cashier){
+    public static Cashier mapToCashierForUpdate(CashierRequestDto cashierRequestDto,Cashier cashierupdate){
+
+        cashierupdate.setId(cashierRequestDto.getId());
+        cashierupdate.setName(cashierRequestDto.getName());
+        cashierupdate.setUsername(cashierRequestDto.getUsername());
+        cashierupdate.setMobile(cashierRequestDto.getMobile());
+        cashierupdate.setStatus(cashierRequestDto.getStatus());
+        return cashierupdate;
+    }
+
+    public static CashierRequestDto mapToCashierRequestDto(Cashier cashier){
         CashierRequestDto cashierRequestDto = new CashierRequestDto();
         cashierRequestDto.setId(cashier.getId());
         cashierRequestDto.setName(cashier.getName());
@@ -42,5 +52,10 @@ public class CashierMapper {
         cashierResponseDto.setCreatedAt(cashier.getCreatedAt());
         cashierResponseDto.setUpdatedAt(cashier.getUpdatedAt());
         return cashierResponseDto;
+    }
+
+    public static Cashier mapForPassword(CashierRequestDto cashierRequestDto,Cashier cashier){
+        cashier.setPassword(passwordEncoder.encode(cashierRequestDto.getPassword()));
+        return cashier;
     }
 }

@@ -136,4 +136,32 @@ public class OrderService {
             responseDto.setContent(null);
         }
     }
+
+    @Transactional
+    public void updateOrderStatus(OrderRequestDto orderRequestDto){
+        try{
+            if(orderRequestDto.getId() == null || !orderRepository.existsById(orderRequestDto.getId())){
+                responseDto.setCode(VarList.RSP_NO_DATA_FOUND);
+                responseDto.setMessage("No order id found");
+                responseDto.setContent(orderRequestDto);
+            }
+            else if(orderRequestDto.getOrderStatus().isEmpty()){
+                responseDto.setCode(VarList.RSP_NO_DATA_FOUND);
+                responseDto.setMessage("No order status found");
+                responseDto.setContent(orderRequestDto);
+            }else{
+                orderRepository.updateOrderStatus(orderRequestDto.getId(),orderRequestDto.getOrderStatus());
+                responseDto.setCode(VarList.RSP_SUCCESS);
+                responseDto.setMessage("Order Successfully Updated");
+                responseDto.setContent(orderRequestDto);
+            }
+        }catch (Exception e){
+            responseDto.setCode(VarList.RSP_ERROR);
+            responseDto.setMessage(e.getMessage());
+            responseDto.setContent(null);
+        }
+
+    }
+
+
 }

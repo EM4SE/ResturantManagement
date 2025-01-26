@@ -73,4 +73,21 @@ public class OrderConroller {
             return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PostMapping("updatestatus")
+    public ResponseEntity<ResponseDto> updateStatus(@Valid @RequestBody OrderRequestDto orderRequestDto) {
+        try{
+            orderService.updateOrderStatus(orderRequestDto);
+            if(responseDto.getCode().equals(VarList.RSP_SUCCESS)){
+                return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+            }else{
+                return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
+            }
+        }catch (Exception e){
+            responseDto.setCode(VarList.RSP_ERROR);
+            responseDto.setMessage(e.getMessage());
+            responseDto.setContent(null);
+            return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

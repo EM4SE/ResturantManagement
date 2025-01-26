@@ -16,6 +16,7 @@ public static OrderItemRequestDto toOrderItemRequestDto(OrderItem orderItem) {
     orderItemRequestDto.setId(orderItem.getId());
     orderItemRequestDto.setOrderId(orderItem.getOrderId());
     orderItemRequestDto.setItemName(orderItem.getItemName());
+    orderItemRequestDto.setSpecialNote(orderItem.getSpecialNote());
     orderItemRequestDto.setQuantity(orderItem.getQuantity());
     orderItemRequestDto.setUnitPrice(orderItem.getUnitPrice());
     orderItemRequestDto.setTotalPrice(orderItem.getTotalPrice());
@@ -48,6 +49,7 @@ public static List<OrderItem> toOrderItemList(List<OrderItemRequestDto> orderIte
         orderItem.setOrderId(orderId);
         orderItem.setItemName(orderItemRequestDto.getItemName());
         orderItem.setQuantity(orderItemRequestDto.getQuantity());
+        orderItem.setSpecialNote(orderItemRequestDto.getSpecialNote());
         orderItem.setUnitPrice(orderItemRequestDto.getUnitPrice());
         orderItem.setTotalPrice(orderItemRequestDto.getTotalPrice());
         return orderItem;

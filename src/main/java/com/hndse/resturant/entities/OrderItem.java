@@ -17,6 +17,7 @@ public class OrderItem {
     private Integer orderId;
     private String itemName;
     private Integer quantity;
+    private String specialNote;
     private double unitPrice;
     private double totalPrice;
 

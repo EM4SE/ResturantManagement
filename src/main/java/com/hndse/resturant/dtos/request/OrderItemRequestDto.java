@@ -11,6 +11,7 @@ public class OrderItemRequestDto {
     private Integer id;
     private String itemName;
     private Integer orderId;
+    private String specialNote;
     private Integer quantity;
     private double unitPrice;
     private double totalPrice;

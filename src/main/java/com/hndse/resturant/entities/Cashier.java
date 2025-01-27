@@ -19,6 +19,7 @@ public class Cashier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    @Column(unique = true, nullable = false)
     private String username;
     private String password;
     private int mobile;
